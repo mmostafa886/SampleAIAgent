@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Case Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<!-- Logs Toggle Button -->
+<button class="logs-toggle" onclick="toggleLogs()">
+    📊 View Logs
+</button>
+
+<!-- Logs Panel -->
+<div class="logs-panel" id="logsPanel">
+    <div class="logs-header">
+        <h3>📊 Live Logs</h3>
+        <button class="logs-close" onclick="toggleLogs()">×</button>
+    </div>
+    <div class="logs-controls">
+        <button onclick="clearLogs()">🗑️ Clear</button>
+        <button onclick="exportLogs()">💾 Export</button>
+    </div>
+    <div class="logs-content" id="logsContent">
+        <div class="log-entry info">
+            <span class="log-timestamp">[Ready]</span>
+            <span class="log-message">Logs will appear here...</span>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <h1>🧪 Test Case Generator</h1>
+    <p class="subtitle">Automatically generate test cases from user stories using AI</p>
+
+    <div class="tab-container">
+        <button class="tab active" onclick="switchTab('text')">📝 Enter Text</button>
+        <button class="tab" onclick="switchTab('file')">📄 Upload File</button>
+    </div>
+
+    <div id="textTab" class="tab-content active">
+        <div class="input-group">
+            <label for="userStoryText">User Story</label>
+            <textarea
+                    id="userStoryText"
+                    rows="10"
+                    placeholder="**Description:**&#10;As a user of an e-commerce website, I want to be able to log in to my account...&#10;&#10;**Acceptance Criteria:**&#10;1. A user with valid credentials should be able to log in successfully.&#10;2. A user with invalid credentials should see an error message..."
+            ></textarea>
+            <p class="hint">Enter your user story with description and acceptance criteria</p>
+        </div>
+    </div>
+
+    <div id="fileTab" class="tab-content">
+        <div class="input-group">
+            <label>Upload User Story File</label>
+            <label for="fileInput" class="file-upload-btn">
+                📁 Choose File (.txt)
+            </label>
+            <input type="file" id="fileInput" accept=".txt" onchange="handleFileSelect(event)">
+            <div id="fileName" class="file-name"></div>
+        </div>
+    </div>
+
+    <div class="input-group">
+        <label for="filename">Output Filename (without .csv)</label>
+        <input
+                type="text"
+                id="filename"
+                placeholder="e.g., login_test_cases"
+                value="test_cases"
+        >
+        <p class="hint">The file will be saved with a timestamp automatically</p>
+    </div>
+
+    <button class="generate-btn" onclick="generateTestCases()">
+        ✨ Generate Test Cases
+    </button>
+
+    <div class="loader" id="loader"></div>
+
+    <div id="result" class="result"></div>
+</div>
+
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
