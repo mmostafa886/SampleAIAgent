@@ -70,7 +70,7 @@ export GOOGLE_APPLICATION_CREDENTIALS="path/to/your/service-account-file.json"
 ```bash
 python app.py
 ```
-- Open your browser and navigate to `http://localhost:5000` to access the web interface.
+- Open your browser and navigate to `http://localhost:8000` to access the web interface.
 ## 🛠️ Usage
 ### Web Interface
 1. **Enter User Story**: Type or paste your user story and acceptance criteria into the text area.
