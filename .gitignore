@@ -2,3 +2,4 @@
 /SampleAIAgent.iml
 /.idea/
 /generated_test_cases/
+/environment/*.json
